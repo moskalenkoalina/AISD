@@ -1,28 +1,25 @@
 class Node:
-    def __init__(self, val):
-        self.val = val
+    def __init__(self, item):
+        self.val = item
         self.left = None
         self.right = None
 
-
-def insert(root, val):
+def insert(root, item):
     if root is None:
-        return Node(val)
+        return Node(item)
 
-    if val < root.val:
-        root.left = insert(root.left, val)
+    if item < root.val:
+        root.left = insert(root.left, item)
     else:
-        root.right = insert(root.right, val)
+        root.right = insert(root.right, item)
 
     return root
-
 
 def preorder(root):
     if root is None:
         return ""
 
     return root.val + preorder(root.left) + preorder(root.right)
-
 
 lines = []
 while True:

@@ -1,44 +1,38 @@
 class TreeNode:
-    def __init__(self, x):
-        self.val = x
+    def __init__(self, item):
+        self.item = item
         self.left = None
         self.right = None
-
 
 class Tree:
     def __init__(self):
         self.head = None
 
-    def _insert(self, root, val):
+    def _insert(self, root, item):
         if root is None:
-            return TreeNode(val)
+            return TreeNode(item)
 
-        if val < root.val:
-            root.left = self._insert(root.left, val)
+        if item < root.item:
+            root.left = self._insert(root.left, item)
         else:
-            root.right = self._insert(root.right, val)
+            root.right = self._insert(root.right, item)
 
         return root
 
-    def Insert(self, val):
-        self.head = self._insert(self.head, val)
+    def Insert(self, item):
+        self.head = self._insert(self.head, item)
 
     def _is_same(self, a, b):
         if a is None and b is None:
             return 1
-
         if a is None or b is None:
             return 0
-
-        if a.val != b.val:
+        if a.item != b.item:
             return 0
-
         return self._is_same(a.left, b.left) and self._is_same(a.right, b.right)
 
     def IsSameTree(self, p):
         return self._is_same(self.head, p.head)
-
-
 n = int(input())
 a = list(map(int, input().split()))
 
